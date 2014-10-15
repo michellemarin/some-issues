@@ -10,9 +10,22 @@ var setIssuesData = function (data) {
   _.each(data, function (issue) {
     var issuesTemplate = _.template($('#theIssueTemplate').html());
     $('#templateContainer').append(issuesTemplate(issue));
-    console.log(issuesTemplate);
-    console.log(issue);
+    setInterval(function() {
+    $('#theIssueTemplate').remove();
+  }, 1000);
   });
 };
 
 myIssues();
+
+var issueAmount = myIssues.length;
+var interval = setInterval (function(myIssues) {
+  issueAmount += 1;
+  if (issueAmount === 2) {
+    clearInterval(interval);
+  }
+}, 1000);
+
+
+
+console.log(interval);
