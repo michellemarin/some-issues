@@ -1,31 +1,18 @@
-console.log('The Iron Yard Rocks');
 
 var myIssues = function () {
-$.getJSON('https://api.github.com/repos/michellemarin/jsfun/issues', function (data) {
-  setIssuesData(data);
-});
+  $.getJSON('https://api.github.com/repos/michellemarin/jsfun/issues', function (data) {
+    $('#issues').empty();
+    setIssuesData(data);
+  });
 };
 
 var setIssuesData = function (data) {
   _.each(data, function (issue) {
-    var issuesTemplate = _.template($('#theIssueTemplate').html());
-    $('#templateContainer').append(issuesTemplate(issue));
-    setInterval(function() {
-    $('#theIssueTemplate').remove();
-  }, 1000);
+    var issuesTemplate = _.template($('#issueTemplate').html());
+    $('#issues').append(issuesTemplate(issue));
   });
 };
 
-myIssues();
-
-var issueAmount = myIssues.length;
-var interval = setInterval (function(myIssues) {
-  issueAmount += 1;
-  if (issueAmount === 2) {
-    clearInterval(interval);
-  }
-}, 1000);
 
 
-
-console.log(interval);
+setInterval(myIssues , 1000);

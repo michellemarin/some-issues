@@ -21,25 +21,29 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
-  </head>
-  <body>
+</head>
+<body>
 
-    <div class="hero-unit">
-      <h1>Got Git Issues?</h1>
-      <p>You now have all these issues:</p>
-      <div id="templateContainer">
 
-      </div>
+        <header>
+        <h1>Got Git Issues?</h1>
+        <p>You now have all these issues:</p>
+        <header>
+        <div id='issues'>
 
-    </div>
+        </div>
 
-    <script id='theIssueTemplate' type='text/template'>
+
+
+
+
+    <script id='issueTemplate' type='text/template'>
     <!-- What goes in a template is just normal HTML with special variable tags that grab info from a javascript object {}. -->
-    <ul>
-      <li>Title: <%=  title %></li>
-      <li>Link: <a href="<%=  html_url %>">Click Me!</a></li>
-      <li>Number: <%= number %></li>
-      <li>State: <%=  state %></li>
+    <ul class="hero-unit">
+      <li><h1><%= number %></h1></li>
+      <li><h4><%=  title %></h4></li>
+      <li><a href="<%=  html_url %>">Link to this Issue</a></li>
+      <li>status: <%=  state %></li>
     </ul>
     </script>
     <!-- build:js scripts/vendor.js -->
@@ -50,8 +54,8 @@
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
+        <script src="scripts/githubtoken.js"></script>
         <script src="scripts/main.js"></script>
-        <script src="githubtoken.js"></script>
         <!-- endbuild -->
 </body>
 </html>
